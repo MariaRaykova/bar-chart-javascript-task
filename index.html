@@ -4,27 +4,22 @@
     <title>Bar Chart</title>
     <meta charset="UTF-8" />
   </head>
-
   <body>
     <div id="app"></div>
-    <form id="form">
-      <input type="file" id="csvFile" accept=".csv" />
-      <br />
-      <input type="submit" value="Submit" />
-    </form>
-    <div id="canvas-container">
-      <canvas id="my-canvas" height="500" width="900"> </canvas>
+    <div id="loading">
+      Loading...
     </div>
-    <h3>Controls for this chart</h3>
+    <p>Controls for this chart</p>
     <label>Timeline units</label>
     <select id="select_interval">
-      <option value="day" selected>Day</option>
+      <option>Select</option>
+      <option value="day">Day</option>
       <option value="week">Week</option>
       <option value="month">Month</option>
     </select>
-    <h3>Work Days Settings</h3>
+    <p>Work Days Settings</p>
     <select id="day_start">
-      <option value="1" selected>Monday</option>
+      <option value="1">Monday</option>
       <option value="2">Tuesday</option>
       <option value="3">Wednesday</option>
       <option value="4">Thursday</option>
@@ -33,7 +28,7 @@
       <option value="0">Sunday</option>
     </select>
     <select id="day_end">
-      <option value="5" selected>Friday</option>
+      <option value="5">Friday</option>
       <option value="6">Saturday</option>
       <option value="0">Sunday</option>
       <option value="1">Monday</option>
@@ -41,7 +36,7 @@
       <option value="3">Wednesday</option>
       <option value="4">Thursday</option>
     </select>
-    <label>Start Color Palette</label>
+    <p>Start Color Palette</p>
     <select id="color_id_start">
       <option value="#D8BFD8" selected>Thistle</option>
       <option value="#9ACD32">Yellow Green</option>
@@ -52,10 +47,10 @@
       <option value="#20B2AA">Light Sea Green</option>
       <option value="#4682B4">Steel Blue</option>
     </select>
-    <label>End Color Palette</label>
+    <p>End Color Palette</p>
     <select id="color_id_end">
       <option value="#D8BFD8">Thistle</option>
-      <option value="#9ACD32" selected>Yellow Green</option>
+      <option value="#9ACD32"> Yellow Green</option>
       <option value="#87CEEB">Sky Blue</option>
       <option value="#9400D3">Dark Violet</option>
       <option value="#00CED1">Dark Turquoise</option>
@@ -63,7 +58,9 @@
       <option value="#20B2AA">Light Sea Green</option>
       <option value="#4682B4">Steel Blue</option>
     </select>
-
+    <div id="canvas-container">
+      <canvas id="my-canvas" height="500" width="900"> </canvas>
+    </div>
     <script src="src/index.js"></script>
   </body>
 </html>

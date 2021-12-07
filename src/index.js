@@ -3,14 +3,22 @@ import getDays from "./days";
 import getWeeks from "./weeks";
 import getMonths from "./months";
 import drawBarChart from "./draw";
+import newData from "./getData";
 var startColor = "red";
 var endColor = "green";
 var data = [];
 var startDay = 1;
 var endDay = 5;
 var workingDays = [];
+window.setTimeout(function () {
+  hideLoader();
+}, 10000);
+function hideLoader() {
+  document.getElementById("loading").style.display = "none";
+}
+console.log(newData.length);
 calculateWorkingDays();
-data = getDays(workingDays);
+data = getDays(workingDays, newData);
 drawBarChart(data, startColor, endColor);
 
 const intervalSelect = document.getElementById("select_interval");
@@ -19,18 +27,15 @@ intervalSelect.addEventListener(`change`, (e) => {
   const value = select.options[select.selectedIndex].value;
   if (value === "day") {
     clearChart();
-    // calculateWorkingDays();
-    data = getDays(workingDays);
+    data = getDays(workingDays, newData);
     drawBarChart(data, startColor, endColor);
   } else if (value === "week") {
     clearChart();
-    // calculateWorkingDays();
-    data = getWeeks(workingDays);
+    data = getWeeks(workingDays, newData);
     drawBarChart(data, startColor, endColor);
   } else if (value === "month") {
     clearChart();
-
-    data = getMonths(workingDays);
+    data = getMonths(workingDays, newData);
     drawBarChart(data, startColor, endColor, workingDays);
   }
 });

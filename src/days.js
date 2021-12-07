@@ -1,11 +1,8 @@
-//import newData from "./getData";
-import newData from "./newData";
-
-const getDays = (workingDays) => {
+const getDays = (workingDays, newData) => {
   const newArray = [];
-  console.log(newData[0]);
-  newData[0]?.forEach((obj) => {
-    const startDateAndHour = new Date(obj["Start"]);
+
+  newData.forEach((obj) => {
+    const startDateAndHour = new Date(obj["Start Date"]);
     const startDateUTC = new Date(
       Date.UTC(
         startDateAndHour.getFullYear(),
@@ -21,7 +18,8 @@ const getDays = (workingDays) => {
       startDateAndHour.getMonth() +
       "/" +
       startDateAndHour.getDate();
-    const endDateAndHour = new Date(obj["End\r"]);
+
+    const endDateAndHour = new Date(obj["End Date\r"]);
     const endDateUTC = new Date(
       Date.UTC(
         endDateAndHour.getFullYear(),

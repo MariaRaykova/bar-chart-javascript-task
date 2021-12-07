@@ -1,9 +1,8 @@
-import newData from "./newData";
-//import newData from "./getData";
-const getWeeks = (workingDays) => {
+const getWeeks = (workingDays, newData) => {
   const newArray = [];
-  newData[0].forEach((obj) => {
-    const startDateAndHour = new Date(obj["Start"]);
+
+  newData.forEach((obj) => {
+    const startDateAndHour = new Date(obj["Start Date"]);
     const startDateUTC = new Date(
       Date.UTC(
         startDateAndHour.getFullYear(),
@@ -21,8 +20,7 @@ const getWeeks = (workingDays) => {
         7
     );
     let startFullWeek = "Week " + startWeek + " " + startDateUTC.getFullYear();
-
-    const endDateAndHour = new Date(obj["End\r"]);
+    const endDateAndHour = new Date(obj["End Date\r"]);
     const endDateUTC = new Date(
       Date.UTC(
         endDateAndHour.getFullYear(),

@@ -1,6 +1,3 @@
-const form = document.getElementById("form");
-const csvFile = document.getElementById("csvFile");
-
 function dataToArray(str, delimiter = ",") {
   const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
   const rows = str.slice(str.indexOf("\n") + 1).split("\n");
@@ -12,19 +9,18 @@ function dataToArray(str, delimiter = ",") {
     }, {});
     return el;
   });
-
   return arr;
 }
+const logFileText = async (file) => {
+  const response = await fetch(file);
+  const text = await response.text();
+  return text;
+};
 const newData = [];
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  const input = csvFile.files[0];
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    const text = e.target.result;
-    newData.push(dataToArray(text));
-    document.write(JSON.stringify(newData));
-  };
-  reader.readAsText(input);
-});
+logFileText("card_data_v2.csv")
+  .then((data) => dataToArray(data))
+  .then((data) => {
+    newData.push(...data);
+    return newData;
+  });
 export default newData;
